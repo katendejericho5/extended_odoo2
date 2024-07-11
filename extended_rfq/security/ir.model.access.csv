@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_purchase_order_user,purchase.order user,model_purchase_order,,1,0,0,0
+access_purchase_order_manager,purchase.order manager,model_purchase_order,purchase.group_purchase_manager,1,1,1,1
+access_purchase_bid_user,purchase.bid user,model_purchase_bid,,1,0,0,0
+access_purchase_bid_manager,purchase.bid manager,model_purchase_bid,purchase.group_purchase_manager,1,1,1,1
+access_purchase_bid_admin,purchase.bid admin,model_purchase_bid,base.group_system,1,1,1,1

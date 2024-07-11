@@ -1,0 +1,55 @@
+<odoo>
+    <!-- Form View -->
+    <record id="view_national_id_application_form" model="ir.ui.view">
+        <field name="name">national.id.application.form</field>
+        <field name="model">national.id.application</field>
+        <field name="arch" type="xml">
+            <form string="National ID Application">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="birth_date"/>
+                        <field name="address"/>
+                        <field name="photo" widget="image"/>
+                        <field name="lc_reference_letter" widget="binary"/>
+                        <field name="stage"/>
+                        <field name="approver_ids" widget="many2many_tags"/>
+                    </group>
+                    <footer>
+                        <button string="Approve Stage 1" type="object" name="action_approve_stage1" 
+                                invisible="stage != 'draft'"/>
+                        <button string="Approve Stage 2" type="object" name="action_approve_stage2" 
+                                invisible="stage != 'stage1'"/>
+                        <button string="Done" type="object" name="action_done" 
+                                invisible="stage != 'stage2'"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_national_id_application_tree" model="ir.ui.view">
+        <field name="name">national.id.application.tree</field>
+        <field name="model">national.id.application</field>
+        <field name="arch" type="xml">
+            <tree string="National ID Applications">
+                <field name="name"/>
+                <field name="birth_date"/>
+                <field name="address"/>
+                <field name="stage"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_national_id_application" model="ir.actions.act_window">
+        <field name="name">National ID Applications</field>
+        <field name="res_model">national.id.application</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem id="menu_national_id_application" name="National ID Application" sequence="1"/>
+    <menuitem id="submenu_national_id_application" name="Applications" parent="menu_national_id_application" action="action_national_id_application"/>
+</odoo>

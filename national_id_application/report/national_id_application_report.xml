@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_national_id_application" model="ir.actions.report">
+        <field name="name">National Id Application</field>
+        <field name="model">national.id.application</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">addon.report_national_id_application_view</field>
+        <field name="report_file">addon.report_national_id_application</field>
+        <field name="print_report_name">'%s' % object.name</field>
+        <field name="binding_model_id" ref="model_national_id_application"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_national_id_application_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Title</h2>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="doc.field_ids" t-as="field">
+                                    <td>
+                                        <span t-esc="field.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="field.description"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
